@@ -1,29 +1,36 @@
-plugins {
-    id 'com.android.application'
-}
-
 android {
-    namespace 'com.example.myapp' // Thêm namespace vào đây
-    compileSdk 34
+    compileSdkVersion 33 // hoặc phiên bản bạn đang sử dụng
 
     defaultConfig {
         applicationId "com.example.myapp"
-        minSdk 21
-        targetSdk 34
+        minSdkVersion 21
+        targetSdkVersion 33 // hoặc phiên bản bạn đang sử dụng
         versionCode 1
         versionName "1.0"
     }
 
+    signingConfigs {
+        release {
+            storeFile file(properties['MY_KEYSTORE_FILE'])
+            storePassword properties['MY_KEYSTORE_PASSWORD']
+            keyAlias properties['MY_KEY_ALIAS']
+            keyPassword properties['MY_KEY_PASSWORD']
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    // Các cấu hình khác như buildFeatures, viewBinding, v.v.
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    // Các dependencies khác của bạn
 }
 
