@@ -29,6 +29,9 @@ jobs:
     - name: Build APK
       run: ./gradlew assembleRelease
 
+    - name: tmate debug
+      uses: mxschmitt/action-tmate@v3
+
     
     - name: Upload Debug APK as artifact
       uses: actions/upload-artifact@v3
