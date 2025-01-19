@@ -1,4 +1,4 @@
-name: Android App Test
+name: Android Build
 
 on:
   push:
@@ -15,13 +15,11 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v3
-      with:
-        distribution: 'temurin'
-        java-version: '17'
 
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
+        distribution: 'temurin'
         java-version: '17'
 
     - name: Set up Gradle
@@ -35,4 +33,3 @@ jobs:
       with:
         name: app-release
         path: app/build/outputs/apk/release/app-release.apk
-
