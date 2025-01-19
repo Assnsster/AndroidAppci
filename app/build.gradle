@@ -1,20 +1,22 @@
+apply plugin: 'com.android.application'  // Áp dụng plugin Android ở đây
+
 android {
-    compileSdkVersion 33 // Hoặc phiên bản SDK bạn đang sử dụng
+    compileSdkVersion 33  // Hoặc phiên bản bạn sử dụng
 
     defaultConfig {
         applicationId "com.example.myapp"
         minSdkVersion 21
-        targetSdkVersion 33 // Hoặc phiên bản SDK bạn đang sử dụng
+        targetSdkVersion 33  // Hoặc phiên bản bạn sử dụng
         versionCode 1
         versionName "1.0"
     }
 
     signingConfigs {
         release {
-            storeFile file(properties['MY_KEYSTORE_FILE']) // Tham chiếu đến keystore từ gradle.properties
-            storePassword properties['MY_KEYSTORE_PASSWORD'] // Tham chiếu đến mật khẩu keystore
-            keyAlias properties['MY_KEY_ALIAS'] // Tham chiếu đến alias key
-            keyPassword properties['MY_KEY_PASSWORD'] // Tham chiếu đến mật khẩu key
+            storeFile file(properties['MY_KEYSTORE_FILE'])
+            storePassword properties['MY_KEYSTORE_PASSWORD']
+            keyAlias properties['MY_KEY_ALIAS']
+            keyPassword properties['MY_KEY_PASSWORD']
         }
     }
 
@@ -25,14 +27,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    // Các cấu hình khác như buildFeatures, viewBinding, v.v.
-    buildFeatures {
-        viewBinding true // Nếu bạn sử dụng ViewBinding
-    }
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:28.0.0' // Hoặc dependencies khác nếu bạn dùng
-    // Các dependencies khác của bạn
+    implementation 'com.android.support:appcompat-v7:28.0.0'  // Hoặc dependencies khác của bạn
 }
